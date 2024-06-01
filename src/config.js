@@ -1,5 +1,5 @@
 const config = {
-  apiUrl: "https://todo-grids-api.vercel.app", // Your deployed API URL
+  apiUrl: "https://todo-grids-api.vercel.app/api", // Your deployed API URL
 };
 
 export default config;
