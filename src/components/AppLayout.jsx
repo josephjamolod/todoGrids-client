@@ -46,7 +46,7 @@ export default function AppLayout() {
   }, [urlLocation]);
 
   useLayoutEffect(() => {
-    Axios.get(`${config}/auth/check-token`)
+    Axios.get(`${config.apiUrl}/auth/check-token`)
       .then((res) => {
         if (res.data.msg === "No token") {
           dispatch(checkUser());
