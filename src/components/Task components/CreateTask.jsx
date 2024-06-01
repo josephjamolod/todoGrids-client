@@ -12,6 +12,7 @@ import { IoHeart } from "react-icons/io5";
 import { IoCheckmarkCircle } from "react-icons/io5";
 import { FaExclamation } from "react-icons/fa";
 import Search from "../Search";
+import config from "../../config";
 
 export default function CreateTask() {
   const { currentUser } = useSelector((state) => state.user);
@@ -35,7 +36,7 @@ export default function CreateTask() {
     e.preventDefault();
     setError(false);
     setLoading(true);
-    Axios.post(`/api/task/create-task/${currentUser._id}`, task)
+    Axios.post(`${config.apiUrl}/task/create-task/${currentUser._id}`, task)
       .then((res) => {
         setLoading(false);
         setTask({ task: "", important: false, completed: false, title: "" });

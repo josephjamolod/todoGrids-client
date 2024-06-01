@@ -27,6 +27,7 @@ import { Link } from "react-router-dom";
 //icons
 import { MdEdit } from "react-icons/md";
 import { GoEye, GoEyeClosed } from "react-icons/go";
+import config from "../config";
 
 export default function Profile() {
   const {
@@ -103,7 +104,7 @@ export default function Profile() {
   useEffect(() => {
     dispatch(updateUserStart(false));
     setLoading(true);
-    Axios.get(`/api/auth/getUser/${currentUser._id}`)
+    Axios.get(`${config.apiUrl}/auth/getUser/${currentUser._id}`)
       .then((res) => {
         setLoading(false);
         return setUserInfo(res.data);
@@ -125,7 +126,10 @@ export default function Profile() {
     e.preventDefault();
     setFileUploadError(false);
     dispatch(updateUserStart(true));
-    Axios.patch(`/api/auth/update-user/${currentUser._id}`, userInfo)
+    Axios.patch(
+      `${config.apiUrl}/auth/update-user/${currentUser._id}`,
+      userInfo
+    )
       .then((res) => {
         handleClick();
         dispatch(updateUserSuccess(res.data));

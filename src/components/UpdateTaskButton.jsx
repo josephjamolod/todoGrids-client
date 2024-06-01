@@ -4,12 +4,13 @@ import { toggle } from "../redux/user/userSlice";
 
 import { FaCheck } from "react-icons/fa";
 import { useDispatch } from "react-redux";
+import config from "../config";
 
 export default function UpdateTaskButton({ disable, task, initialTask }) {
   const dispatch = useDispatch();
   const [taskUpdate, setTaskUpdated] = useState(false);
   const handleUpdateButton = () => {
-    Axios.patch(`/api/task/update-task/${task._id}`, initialTask)
+    Axios.patch(`${config.apiUrl}/task/update-task/${task._id}`, initialTask)
       .then((res) => {
         setTaskUpdated(true);
         setTimeout(() => {

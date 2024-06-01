@@ -5,6 +5,7 @@ import Axios from "axios";
 import { IoMdArrowBack } from "react-icons/io";
 import { IoShieldCheckmarkOutline } from "react-icons/io5";
 import { MdOutlineErrorOutline } from "react-icons/md";
+import config from "../config";
 
 export default function VerifyEmail() {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ export default function VerifyEmail() {
         setNoEmailToken(true);
         return;
       }
-      Axios.patch("/api/auth/verify-email", {
+      Axios.patch(`${config.apiUrl}/auth/verify-email`, {
         emailToken,
       })
         .then((res) => {

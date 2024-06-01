@@ -19,6 +19,7 @@ import { TfiWrite } from "react-icons/tfi";
 import OAuth from "../components/OAuth";
 import Loader from "../components/Loader";
 import { GoEye, GoEyeClosed } from "react-icons/go";
+import config from "../config";
 
 export default function SignUp() {
   const { currentUser, dark } = useSelector((state) => state.user);
@@ -61,7 +62,7 @@ export default function SignUp() {
 
   const onSubmit = (data) => {
     setLoading(true);
-    Axios.post(`/api/auth/sign-up`, data)
+    Axios.post(`${config.apiUrl}/auth/sign-up`, data)
       .then((res) => {
         setLoading(false);
         setError(false);

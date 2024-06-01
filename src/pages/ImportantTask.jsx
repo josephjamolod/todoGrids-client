@@ -6,6 +6,7 @@ import Tasks from "./Tasks";
 import Loader from "../components/Loader";
 import EmptyTask from "../components/EmptyTask";
 import ShowMoreButton from "../components/ShowMoreButton";
+import config from "../config";
 
 export default function ImportantTask() {
   const { currentUser, toggle } = useSelector((state) => state.user);
@@ -17,7 +18,11 @@ export default function ImportantTask() {
 
   useEffect(() => {
     setLoading(true);
-    Axios.get(`/api/task/get-task/${currentUser._id}?${urlParams.toString()}`)
+    Axios.get(
+      `${config.apiUrl}/task/get-task/${
+        currentUser._id
+      }?${urlParams.toString()}`
+    )
       .then((res) => {
         setLoading(false);
         if (res.data.length < 12) {
@@ -34,7 +39,11 @@ export default function ImportantTask() {
   const fetchData = () => {
     const urlParams = new URLSearchParams(window.location.search);
     urlParams.set("startIndex", tasks.length);
-    Axios.get(`/api/task/get-task/${currentUser._id}?${urlParams.toString()}`)
+    Axios.get(
+      `${config.apiUrl}/task/get-task/${
+        currentUser._id
+      }?${urlParams.toString()}`
+    )
       .then((res) => {
         setLoading(false);
         if (res.data.length < 12) {

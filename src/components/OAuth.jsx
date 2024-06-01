@@ -7,6 +7,7 @@ import GoogleIcon from "../assets/icons/GoogleIcon";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { app } from "../firebase";
 import { signInUserSuccess } from "../redux/user/userSlice";
+import config from "../config";
 
 export default function OAuth() {
   const [error, setError] = useState(false);
@@ -21,7 +22,7 @@ export default function OAuth() {
     const auth = getAuth(app);
     const response = await signInWithPopup(auth, provider);
     const { displayName, email, photoURL } = response.user;
-    Axios.post("/api/auth/google", {
+    Axios.post(`${config.apiUrl}/auth/google`, {
       name: displayName,
       email,
       photo: photoURL,

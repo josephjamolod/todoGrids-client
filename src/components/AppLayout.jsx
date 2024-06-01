@@ -18,6 +18,7 @@ import DarkMode from "./Header Components/DarkMode";
 import SideBar from "./SideBar";
 import DeleteUserAlert from "./DeleteUserAlert";
 import Logo from "./Logo";
+import config from "../config";
 
 export default function AppLayout() {
   const urlLocation = useLocation();
@@ -45,7 +46,7 @@ export default function AppLayout() {
   }, [urlLocation]);
 
   useLayoutEffect(() => {
-    Axios.get("/api/auth/check-token")
+    Axios.get(`${config}/auth/check-token`)
       .then((res) => {
         if (res.data.msg === "No token") {
           dispatch(checkUser());
@@ -101,10 +102,10 @@ export default function AppLayout() {
   //sign-out user
   const handleSignOut = () => {
     setSideBar(false);
-    Axios.get(`/api/auth/sign-out/${currentUser._id}`)
+    Axios.get(`${config.apiUrl}/auth/sign-out/${currentUser._id}`)
       .then((res) => {
         dispatch(checkUser());
-        navigate("/app/sign-in");
+        navigate(`${config.apiUrl}/sign-in`);
         return;
       })
       .catch((err) => {

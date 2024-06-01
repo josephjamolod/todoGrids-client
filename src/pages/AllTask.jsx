@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import { useNavigate } from "react-router-dom";
 import EmptyTask from "../components/EmptyTask";
 import ShowMoreButton from "../components/ShowMoreButton";
+import config from "../config";
 
 export default function AllTask() {
   //no idea wht this works, but the useEffect wont trigger (ex. is we search '3' in completed task, and navigate to the Task the useEffect wont trigger)
@@ -20,7 +21,11 @@ export default function AllTask() {
 
   useEffect(() => {
     setLoading(true);
-    Axios.get(`/api/task/get-task/${currentUser._id}?${urlParams.toString()}`)
+    Axios.get(
+      `${config.apiUrl}/task/get-task/${
+        currentUser._id
+      }?${urlParams.toString()}`
+    )
       .then((res) => {
         setLoading(false);
         if (res.data.length < 12) {
@@ -39,7 +44,11 @@ export default function AllTask() {
   const fetchData = () => {
     const urlParams = new URLSearchParams(window.location.search);
     urlParams.set("startIndex", tasks.length);
-    Axios.get(`/api/task/get-task/${currentUser._id}?${urlParams.toString()}`)
+    Axios.get(
+      `${config.apiUrl}/task/get-task/${
+        currentUser._id
+      }?${urlParams.toString()}`
+    )
       .then((res) => {
         setLoading(false);
         if (res.data.length < 12) {

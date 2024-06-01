@@ -24,6 +24,7 @@ import { GoEye, GoEyeClosed } from "react-icons/go";
 import OAuth from "../components/OAuth";
 import Loader from "../components/Loader";
 import { useState } from "react";
+import config from "../config";
 
 export default function SignUp() {
   const dispatch = useDispatch();
@@ -58,7 +59,7 @@ export default function SignUp() {
 
   const onSubmit = (data) => {
     dispatch(signInUserStart(true));
-    Axios.post(`/api/auth/sign-in`, data)
+    Axios.post(`${config.apiUrl}/auth/sign-in`, data)
       .then((res) => {
         dispatch(signInUserSuccess(res.data));
         navigate("/app/main/task?task=true");

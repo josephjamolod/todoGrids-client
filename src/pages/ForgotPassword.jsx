@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
+import config from "../config";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState({});
@@ -17,7 +18,7 @@ export default function ForgotPassword() {
     setMessage(false);
     setError(false);
     e.preventDefault();
-    Axios.post("/api/reset-password/request", email)
+    Axios.post(`${config.apiUrl}/reset-password/request`, email)
       .then((res) => {
         setMessage(res.data.msg);
       })

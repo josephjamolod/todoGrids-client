@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { ImExit } from "react-icons/im";
 import { GoEye, GoEyeClosed } from "react-icons/go";
+import config from "../config";
 
 export default function ResetPassword() {
   const { id } = useParams();
@@ -23,7 +24,7 @@ export default function ResetPassword() {
     setError(false);
     setMessage(false);
     e.preventDefault();
-    Axios.post(`/api/reset-password/update/${id}`, newPassword)
+    Axios.post(`${config.apiUrl}/reset-password/update/${id}`, newPassword)
       .then((res) => setMessage(res.data.msg))
       .catch((err) => setError(err.response.data.message));
   };

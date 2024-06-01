@@ -1,10 +1,11 @@
 import { AiOutlineDelete } from "react-icons/ai";
 
 import Axios from "axios";
+import config from "../config";
 
 export default function DeleteTaskButton({ disable, task, deleteTask }) {
   const handleDeleteTask = () => {
-    Axios.delete(`/api/task/delete-task/${task._id}`)
+    Axios.delete(`${config.apiUrl}/task/delete-task/${task._id}`)
       .then((res) => {
         deleteTask(task._id);
         return;
