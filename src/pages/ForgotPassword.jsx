@@ -18,7 +18,9 @@ export default function ForgotPassword() {
     setMessage(false);
     setError(false);
     e.preventDefault();
-    Axios.post(`${config.apiUrl}/reset-password/request`, email)
+    Axios.post(`${config.apiUrl}/reset-password/request`, email, {
+      withCredentials: true,
+    })
       .then((res) => {
         setMessage(res.data.msg);
       })

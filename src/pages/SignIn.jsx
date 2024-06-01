@@ -59,7 +59,7 @@ export default function SignUp() {
 
   const onSubmit = (data) => {
     dispatch(signInUserStart(true));
-    Axios.post(`${config.apiUrl}/auth/sign-in`, data)
+    Axios.post(`${config.apiUrl}/auth/sign-in`, data, { withCredentials: true })
       .then((res) => {
         dispatch(signInUserSuccess(res.data));
         navigate("/app/main/task?task=true");

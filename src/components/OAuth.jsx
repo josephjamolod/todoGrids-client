@@ -22,11 +22,15 @@ export default function OAuth() {
     const auth = getAuth(app);
     const response = await signInWithPopup(auth, provider);
     const { displayName, email, photoURL } = response.user;
-    Axios.post(`${config.apiUrl}/auth/google`, {
-      name: displayName,
-      email,
-      photo: photoURL,
-    })
+    Axios.post(
+      `${config.apiUrl}/auth/google`,
+      {
+        name: displayName,
+        email,
+        photo: photoURL,
+      },
+      { withCredentials: true }
+    )
       .then((res) => {
         setLoading(false);
         dispatch(signInUserSuccess(res.data));
