@@ -19,11 +19,7 @@ export default function CompletedTask() {
 
   useEffect(() => {
     setLoading(true);
-    Axios.get(
-      `https://todo-app-api-lac.vercel.app/task/get-task/${
-        currentUser._id
-      }?${urlParams.toString()}`
-    )
+    Axios.get(`/api/task/get-task/${currentUser._id}?${urlParams.toString()}`)
       .then((res) => {
         setLoading(false);
         if (res.data.length < 12) {
@@ -43,11 +39,7 @@ export default function CompletedTask() {
   const fetchData = () => {
     const urlParams = new URLSearchParams(window.location.search);
     urlParams.set("startIndex", tasks.length);
-    Axios.get(
-      `https://todo-app-api-lac.vercel.app/task/get-task/${
-        currentUser._id
-      }?${urlParams.toString()}`
-    )
+    Axios.get(`/api/task/get-task/${currentUser._id}?${urlParams.toString()}`)
       .then((res) => {
         setLoading(false);
         if (res.data.length < 12) {

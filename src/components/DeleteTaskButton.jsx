@@ -4,9 +4,7 @@ import Axios from "axios";
 
 export default function DeleteTaskButton({ disable, task, deleteTask }) {
   const handleDeleteTask = () => {
-    Axios.delete(
-      `https://todo-app-api-lac.vercel.app/task/delete-task/${task._id}`
-    )
+    Axios.delete(`/api/task/delete-task/${task._id}`)
       .then((res) => {
         deleteTask(task._id);
         return;

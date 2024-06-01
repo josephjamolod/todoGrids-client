@@ -9,10 +9,7 @@ export default function UpdateTaskButton({ disable, task, initialTask }) {
   const dispatch = useDispatch();
   const [taskUpdate, setTaskUpdated] = useState(false);
   const handleUpdateButton = () => {
-    Axios.patch(
-      `https://todo-app-api-lac.vercel.app/task/update-task/${task._id}`,
-      initialTask
-    )
+    Axios.patch(`/api/task/update-task/${task._id}`, initialTask)
       .then((res) => {
         setTaskUpdated(true);
         setTimeout(() => {

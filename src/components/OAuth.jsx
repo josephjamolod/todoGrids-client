@@ -21,7 +21,7 @@ export default function OAuth() {
     const auth = getAuth(app);
     const response = await signInWithPopup(auth, provider);
     const { displayName, email, photoURL } = response.user;
-    Axios.post("https://todo-app-api-lac.vercel.app/auth/google", {
+    Axios.post("/api/auth/google", {
       name: displayName,
       email,
       photo: photoURL,

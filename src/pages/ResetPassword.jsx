@@ -23,10 +23,7 @@ export default function ResetPassword() {
     setError(false);
     setMessage(false);
     e.preventDefault();
-    Axios.post(
-      `https://todo-app-api-lac.vercel.app/reset-password/update/${id}`,
-      newPassword
-    )
+    Axios.post(`/api/reset-password/update/${id}`, newPassword)
       .then((res) => setMessage(res.data.msg))
       .catch((err) => setError(err.response.data.message));
   };

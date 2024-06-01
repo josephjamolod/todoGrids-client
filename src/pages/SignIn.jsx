@@ -58,7 +58,7 @@ export default function SignUp() {
 
   const onSubmit = (data) => {
     dispatch(signInUserStart(true));
-    Axios.post(`https://todo-app-api-lac.vercel.app/auth/sign-in`, data)
+    Axios.post(`/api/auth/sign-in`, data)
       .then((res) => {
         dispatch(signInUserSuccess(res.data));
         navigate("/app/main/task?task=true");

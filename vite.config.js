@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://todo-app-api-lac.vercel.app",
+        target: "https://todo-grids-api.vercel.app",
         secure: false,
       },
     },

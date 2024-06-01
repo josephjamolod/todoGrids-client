@@ -45,7 +45,7 @@ export default function AppLayout() {
   }, [urlLocation]);
 
   useLayoutEffect(() => {
-    Axios.get("https://todo-app-api-lac.vercel.app/auth/check-token")
+    Axios.get("/api/auth/check-token")
       .then((res) => {
         if (res.data.msg === "No token") {
           dispatch(checkUser());

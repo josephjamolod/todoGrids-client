@@ -27,7 +27,7 @@ export default function VerifyEmail() {
         setNoEmailToken(true);
         return;
       }
-      Axios.patch("https://todo-app-api-lac.vercel.app/auth/verify-email", {
+      Axios.patch("/api/auth/verify-email", {
         emailToken,
       })
         .then((res) => {

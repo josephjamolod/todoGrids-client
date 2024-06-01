@@ -17,10 +17,7 @@ export default function ForgotPassword() {
     setMessage(false);
     setError(false);
     e.preventDefault();
-    Axios.post(
-      "https://todo-app-api-lac.vercel.app/reset-password/request",
-      email
-    )
+    Axios.post("/api/reset-password/request", email)
       .then((res) => {
         setMessage(res.data.msg);
       })

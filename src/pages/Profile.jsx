@@ -103,9 +103,7 @@ export default function Profile() {
   useEffect(() => {
     dispatch(updateUserStart(false));
     setLoading(true);
-    Axios.get(
-      `https://todo-app-api-lac.vercel.app/auth/getUser/${currentUser._id}`
-    )
+    Axios.get(`/api/auth/getUser/${currentUser._id}`)
       .then((res) => {
         setLoading(false);
         return setUserInfo(res.data);
@@ -127,10 +125,7 @@ export default function Profile() {
     e.preventDefault();
     setFileUploadError(false);
     dispatch(updateUserStart(true));
-    Axios.patch(
-      `https://todo-app-api-lac.vercel.app/auth/update-user/${currentUser._id}`,
-      userInfo
-    )
+    Axios.patch(`/api/auth/update-user/${currentUser._id}`, userInfo)
       .then((res) => {
         handleClick();
         dispatch(updateUserSuccess(res.data));

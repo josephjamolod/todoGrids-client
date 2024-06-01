@@ -61,7 +61,7 @@ export default function SignUp() {
 
   const onSubmit = (data) => {
     setLoading(true);
-    Axios.post(`https://todo-app-api-lac.vercel.app/auth/sign-up`, data)
+    Axios.post(`/api/auth/sign-up`, data)
       .then((res) => {
         setLoading(false);
         setError(false);
